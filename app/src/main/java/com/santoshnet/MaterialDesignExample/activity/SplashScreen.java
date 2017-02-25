@@ -1,6 +1,7 @@
 package com.santoshnet.MaterialDesignExample.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -8,8 +9,11 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.santoshnet.MaterialDesignExample.R;
+
+import static com.santoshnet.MaterialDesignExample.activity.LoginActivity.MY_PREFS_NAME;
 
 public class SplashScreen extends AppCompatActivity {
     ProgressBar bar;
@@ -29,7 +33,9 @@ public class SplashScreen extends AppCompatActivity {
         bar = (ProgressBar) findViewById(R.id.ProgressBar1);
         txt = (TextView) findViewById(R.id.txtrere);
 
-
+        SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+        final String restoredText = prefs.getString("email", null);
+        Toast.makeText(getApplicationContext(), restoredText, Toast.LENGTH_LONG).show();
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -52,9 +58,13 @@ public class SplashScreen extends AppCompatActivity {
                             // Show the progress on TextView
                             txt.setText("Loading..." + progressStatus + "");
                             if (progressStatus == 100) {
+                                if (restoredText == null) {
+                                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                                } else {
 
-                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                startActivity(intent);
+                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                    startActivity(intent);
+                                }
                             }
                         }
                     });

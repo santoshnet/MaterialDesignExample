@@ -2,6 +2,7 @@ package com.santoshnet.MaterialDesignExample.activity;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.ColorDrawable;
@@ -30,6 +31,7 @@ import com.santoshnet.MaterialDesignExample.fragment.SettingFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    private static final String MY_PREFS_NAME = "user_preferences";
     NavigationView navigationView;
     View navHeader;
     ImageView navHeaderImage, profile_image;
@@ -116,7 +118,12 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_logout) {
+           /* SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+            editor.clear();
+            editor.commit();
+            startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+*/
             return true;
         }
 
@@ -150,6 +157,13 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_help:
                 startActivity(new Intent(getApplicationContext(), HelpActivity.class));
+                break;
+            case R.id.nav_logout:
+                SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+                editor.clear();
+                editor.commit();
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+
                 break;
         }
 
