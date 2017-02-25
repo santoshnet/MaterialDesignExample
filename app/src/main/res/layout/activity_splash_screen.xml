@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/navigation_header_bg"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/namever"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:text="By"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:text="Santosh Kumar Dash\nhttp://startcodding.blogspot.in\nComplete Mobile App solutions"
+        android:textColor="#FFFFFF"
+        android:textSize="18dp" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="34dp"
+        android:background="@drawable/profile_image" />
+
+    <TextView
+        android:id="@+id/txtrere"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:text="Loading..."
+        android:textColor="#FFFFFF" />
+
+    <ProgressBar
+        android:id="@+id/ProgressBar1"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/txtrere"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dip"
+        android:max="100"
+        android:progress="50" />
+
+    <TextView
+        android:id="@+id/namever"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="37dp"
+        android:shadowColor="#7F000000"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="2"
+        android:text="Material Design"
+        android:textColor="#FFFFFF"
+        android:textSize="30dp" />
+
+</RelativeLayout>
