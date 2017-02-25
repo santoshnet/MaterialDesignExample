@@ -35,12 +35,18 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.HelpActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity> <activity
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".activity.LoginActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity> <activity
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".activity.RegisterActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity> <activity
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".activity.UsersListActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.ViewDetailsActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

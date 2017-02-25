@@ -15,7 +15,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -28,22 +27,29 @@ import com.santoshnet.MaterialDesignExample.fragment.HomeFragment;
 import com.santoshnet.MaterialDesignExample.fragment.MovieFragment;
 import com.santoshnet.MaterialDesignExample.fragment.NotificationFragment;
 import com.santoshnet.MaterialDesignExample.fragment.SettingFragment;
+import com.santoshnet.MaterialDesignExample.sql.DatabaseHelper;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
     private static final String MY_PREFS_NAME = "user_preferences";
     NavigationView navigationView;
     View navHeader;
     ImageView navHeaderImage, profile_image;
     TextView navHeaderText, navSubHeaderText, profile_name;
     Bitmap icon;
-
+    String email;
+    private DatabaseHelper databaseHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+        email = prefs.getString("email", null);
+
+
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navHeader = navigationView.getHeaderView(0);
         navHeaderImage = (ImageView) navHeader.findViewById(R.id.nav_header_image);
@@ -102,7 +108,7 @@ public class MainActivity extends AppCompatActivity
             super.onBackPressed();
         }
     }
-
+  /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -110,7 +116,7 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    @Override
+  @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -119,16 +125,16 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_logout) {
-           /* SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+           *//* SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
             editor.clear();
             editor.commit();
             startActivity(new Intent(getApplicationContext(),LoginActivity.class));
-*/
+*//*
             return true;
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
     private void displaySelectedScreen(int itemId) {
 
@@ -188,6 +194,5 @@ public class MainActivity extends AppCompatActivity
         //make this method blank
         return true;
     }
-
 
 }

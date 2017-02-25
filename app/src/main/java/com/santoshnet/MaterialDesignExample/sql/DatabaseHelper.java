@@ -109,6 +109,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
          * SQL query equivalent to this query function is
          * SELECT user_id,user_name,user_email,user_password FROM user ORDER BY user_name;
          */
+
         Cursor cursor = db.query(TABLE_USER, //Table to query
                 columns,    //columns to return
                 null,        //columns for the WHERE clause
@@ -136,6 +137,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // return user list
         return userList;
     }
+
 
     /**
      * This method to update user record
@@ -180,6 +182,41 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // array of columns to fetch
         String[] columns = {
                 COLUMN_USER_ID
+        };
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // selection criteria
+        String selection = COLUMN_USER_EMAIL + " = ?";
+
+        // selection argument
+        String[] selectionArgs = {email};
+
+        // query user table with condition
+        /**
+         * Here query function is used to fetch records from user table this function works like we use sql query.
+         * SQL query equivalent to this query function is
+         * SELECT user_id FROM user WHERE user_email = 'jack@androidtutorialshub.com';
+         */
+        Cursor cursor = db.query(TABLE_USER, //Table to query
+                columns,                    //columns to return
+                selection,                  //columns for the WHERE clause
+                selectionArgs,              //The values for the WHERE clause
+                null,                       //group the rows
+                null,                      //filter by row groups
+                null);                      //The sort order
+        int cursorCount = cursor.getCount();
+        cursor.close();
+        db.close();
+
+        return cursorCount > 0;
+
+    }
+
+    public boolean fetchUser(String email) {
+
+        // array of columns to fetch
+        String[] columns = {
+                COLUMN_USER_ID, COLUMN_USER_NAME
         };
         SQLiteDatabase db = this.getReadableDatabase();
 
